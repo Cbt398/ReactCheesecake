@@ -27,8 +27,8 @@ const ViewOrders = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {orders.map((o, index) => (
-                        <tr key={index}>
+                    {orders.map((o) => (
+                        <tr key={o.id}>
                             <td>
                                 <a href={`/orders/${o.id}`}>{o.name} - {o.email}</a>
                             </td>

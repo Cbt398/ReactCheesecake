@@ -84,7 +84,7 @@ const Order = () => {
         };
 
         await axios.post('/api/order/addorder', completeOrder);
-        navigate('/orders');
+        navigate('/success');
     }
 
 
@@ -147,7 +147,7 @@ const Order = () => {
                         <input type="date" className="form-control" name="deliveryDate" value={deliveryDate} onChange={onInputChange} />
                     </div>
 
-                    <button className="btn btn-primary" onClick={onSubmitClick}>Submit Order</button>
+                    <button className="btn btn-primary" disabled={!name || !email || !base || !deliveryDate} onClick={onSubmitClick}>Submit Order</button>
                 </div>
 
                 <div className="col-md-4 offset-md-1">

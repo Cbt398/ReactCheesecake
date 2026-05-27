@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const OrderDetails = () => {
@@ -8,11 +9,11 @@ const OrderDetails = () => {
     const [order, setOrder] = useState(null);
 
     useEffect(() => {
-        const loadOrder = async () => {
+        const getOrder = async () => {
             const { data } = await axios.get(`/api/order/getorder?id=${id}`);
             setOrder(data);
         }
-        loadOrder();
+        getOrder();
     }, []);
 
     if (!order) return <div>Loading...</div>;
@@ -28,9 +29,12 @@ const OrderDetails = () => {
                 <p>{order.quantity}</p>
                 <p>{order.deliveryDate}</p>
                 <p>${order.total}</p>
-                <button className="btn btn-primary" onClick={() => navigate('/orders')}>
-                    Back to Orders
-                </button>
+               
+                <Link to="/viewOrders">
+                    <button className="btn btn-primary w-100">
+                        Back to Orders
+                    </button>
+                </Link>
             </div>
         </div>
     );
